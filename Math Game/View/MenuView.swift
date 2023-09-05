@@ -5,6 +5,7 @@ struct MenuView: View {
     @Binding var isShowingSettings: Bool
     @Binding var selectedDifficulty: GameDifficulty
     @State private var isShowingInstructions: Bool = false // Declare isShowingInstructions
+    @AppStorage("isDarkMode") private var isDarkMode = false // Track the color theme
     
     func button(){
         playSound(sound: "Button", type: "mp3")
@@ -14,10 +15,11 @@ struct MenuView: View {
         NavigationView{
             ZStack {
                 LinearGradient(
-                    gradient: Gradient(colors: [Color.blue, Color.purple]),
+                    gradient: Gradient(colors: isDarkMode ? [Color.black, Color.gray] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea(.all, edges: .all)
+                
                 
                 VStack(spacing: 20) {
                     Spacer()
@@ -87,11 +89,30 @@ struct MenuView: View {
                     .sheet(isPresented: $isShowingSettings) {
                         GameSettingView(isShowingSettings: $isShowingSettings, selectedDifficulty: $selectedDifficulty) // Pass selectedDifficulty
                     }
+                    
+                    
+                    
+                    
+                    Button(action: {
+                        isDarkMode.toggle()
+                        self.button()
+                    }) {
+                        Image(systemName: isDarkMode ? "moon.fill" : "sun.max.fill")
+                            .font(.system(size: 30))
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .background(Color.blue)
+                            .clipShape(Circle())
+                            .offset(x: -20, y: 20) // Position the button in the top-left corner
+                    }
+                    .padding(.leading, 10) // Add some additional padding for better spacing
                 }
             }
+            .preferredColorScheme(isDarkMode ? .dark : .light) // Apply the color scheme
         }
     }
 }
+    
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
