@@ -12,7 +12,6 @@
 		56DCCA9A2AA70F2B00CCE24D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DCCA902AA70F2B00CCE24D /* GameView.swift */; };
 		56DCCA9B2AA70F2B00CCE24D /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DCCA912AA70F2B00CCE24D /* Welcome.swift */; };
 		56DCCA9C2AA70F2B00CCE24D /* WinAchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DCCA922AA70F2B00CCE24D /* WinAchievementView.swift */; };
-		56DCCA9D2AA70F2B00CCE24D /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DCCA932AA70F2B00CCE24D /* AchievementView.swift */; };
 		56DCCA9E2AA70F2B00CCE24D /* GameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DCCA942AA70F2B00CCE24D /* GameSettingView.swift */; };
 		56DCCA9F2AA70F2B00CCE24D /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DCCA952AA70F2B00CCE24D /* GameOverView.swift */; };
 		56DCCAA02AA70F2B00CCE24D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DCCA962AA70F2B00CCE24D /* MenuView.swift */; };
@@ -39,7 +38,6 @@
 		56DCCA902AA70F2B00CCE24D /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		56DCCA912AA70F2B00CCE24D /* Welcome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
 		56DCCA922AA70F2B00CCE24D /* WinAchievementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinAchievementView.swift; sourceTree = "<group>"; };
-		56DCCA932AA70F2B00CCE24D /* AchievementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		56DCCA942AA70F2B00CCE24D /* GameSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettingView.swift; sourceTree = "<group>"; };
 		56DCCA952AA70F2B00CCE24D /* GameOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		56DCCA962AA70F2B00CCE24D /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 				56DCCA902AA70F2B00CCE24D /* GameView.swift */,
 				56DCCA912AA70F2B00CCE24D /* Welcome.swift */,
 				56DCCA922AA70F2B00CCE24D /* WinAchievementView.swift */,
-				56DCCA932AA70F2B00CCE24D /* AchievementView.swift */,
 				56DCCA942AA70F2B00CCE24D /* GameSettingView.swift */,
 				56DCCA952AA70F2B00CCE24D /* GameOverView.swift */,
 				56DCCA962AA70F2B00CCE24D /* MenuView.swift */,
@@ -242,7 +239,6 @@
 				56EDE8E42AA70D890014E02E /* Math_GameApp.swift in Sources */,
 				56DCCA9A2AA70F2B00CCE24D /* GameView.swift in Sources */,
 				56DCCAA02AA70F2B00CCE24D /* MenuView.swift in Sources */,
-				56DCCA9D2AA70F2B00CCE24D /* AchievementView.swift in Sources */,
 				56DCCAA82AA70F5400CCE24D /* DifficultyLevel.swift in Sources */,
 				56DCCAA22AA70F2B00CCE24D /* AnswerButton.swift in Sources */,
 				56DCCA992AA70F2B00CCE24D /* InstructionView.swift in Sources */,
