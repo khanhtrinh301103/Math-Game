@@ -21,6 +21,12 @@ struct GameView: View {
     @State private var timer: Timer?
     @State private var timeRemaining = 10 // Initial time limit
     @State private var isTimerPaused = false // Flag to indicate timer pause state
+    @AppStorage("isDarkMode") private var isDarkMode = false
+
+    private var colorScheme: ColorScheme {
+        isDarkMode ? .dark : .light
+    }
+
     
     
     var body: some View {
@@ -31,6 +37,11 @@ struct GameView: View {
                 endPoint: .bottomTrailing
             ).ignoresSafeArea(.all, edges: .all)
             if !isEnteringUsername {
+                LinearGradient(
+                    gradient: Gradient(colors: isDarkMode ? [Color.black, Color.gray] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ).ignoresSafeArea(.all, edges: .all)
                 RoundedRectangle(cornerRadius: 20) // Adjust the corner radius as needed
                     .stroke(Color.white, lineWidth: 0) // Customize the border color and width
                     .frame(width: 350, height: 650) // Adjust the width and height as needed
@@ -152,6 +163,7 @@ struct GameView: View {
                 }
             }
         }
+        .preferredColorScheme(colorScheme)
         .onAppear {
             // Start the timer when the view appears
             startTimer()
