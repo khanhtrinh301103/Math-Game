@@ -48,7 +48,7 @@ struct InstructionView: View {
                         .foregroundColor(Color.white) // Title text color
                     
                     // Step 1 instructions
-                    StepView(stepNumber: "1", title: "Choose a Difficulty Level", description: "In the settings, select your preferred difficulty level: Easy, Medium, or Hard", backgroundColor: Color.yellow)
+                    StepView(stepNumber: "1", titleKey: "Choose a Difficulty Level", descriptionKey: "In the settings, select your preferred difficulty level: Easy, Medium, or Hard", backgroundColor: Color.yellow)
                     
                     Image("Welcome")
                         .resizable()
@@ -56,7 +56,7 @@ struct InstructionView: View {
                         .foregroundColor(.white)
                     
                     // Step 2 instructions
-                    StepView(stepNumber: "2", title: "Start the Game", description: "After selecting a difficulty level, tap Save button to save the level of difficulty then tap let's play to begin.", backgroundColor: Color.purple)
+                    StepView(stepNumber: "2", titleKey: "Start the Game", descriptionKey: "After selecting a difficulty level, tap Save button to save the level of difficulty then tap let's play to begin.", backgroundColor: Color.purple)
                     
                     Image("Setting")
                         .resizable()
@@ -64,7 +64,7 @@ struct InstructionView: View {
                         .foregroundColor(.white)
                     
                     // Step 3 instructions
-                    StepView(stepNumber: "3", title: "Answer the Questions and saved score", description: "You will be presented with math questions based on your chosen difficulty. Tap the correct answer to earn score, you have 10 seconds for each question. When you save the score, this game will encourage you by a winning screen and notify that your score is saved successfully, you can check the save score by tapping the button view saved scores", backgroundColor: Color.blue)
+                    StepView(stepNumber: "3", titleKey: "Answer the Questions and saved score", descriptionKey: "You will be presented with math questions based on your chosen difficulty. Tap the correct answer to earn score, you have 10 seconds for each question. When you save the score, this game will encourage you by a winning screen and notify that your score is saved successfully, you can check the save score by tapping the button view saved scores", backgroundColor: Color.blue)
                     
                     Image("GameView")
                         .resizable()
@@ -72,7 +72,7 @@ struct InstructionView: View {
                         .foregroundColor(.white)
                     
                     // Step 4 instructions
-                    StepView(stepNumber: "4", title: "Game Over view", description: "When your score is below 0 or the time is up, the game will be overed", backgroundColor: Color.yellow)
+                    StepView(stepNumber: "4", titleKey: "Game Over view", descriptionKey: "When your score is below 0 or the time is up, the game will be overed", backgroundColor: Color.yellow)
                     
                     Image("GameOver")
                         .resizable()
@@ -95,9 +95,12 @@ struct InstructionView: View {
 // StepView displays a single step of instructions.
 struct StepView: View {
     var stepNumber: String
-    var title: String
-    var description: String
+    var titleKey: String  // Use String for the keys
+    var descriptionKey: String  // Use String for the keys
     var backgroundColor: Color
+    
+    var title: LocalizedStringKey { LocalizedStringKey(titleKey) } // Computed property for localized title
+    var description: LocalizedStringKey { LocalizedStringKey(descriptionKey) } // Computed property for localized description
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -123,6 +126,8 @@ struct StepView: View {
         .cornerRadius(10)
     }
 }
+
+
 
 // PreviewProvider for InstructionView
 struct InstructionView_Previews: PreviewProvider {

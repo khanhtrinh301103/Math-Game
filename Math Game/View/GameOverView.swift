@@ -48,25 +48,27 @@ struct GameOverView: View {
                         }
                     }
 
-                Text("Username: \(username)")
+                Text("\(NSLocalizedString("Username:", comment: "")) \(username)")
                     .font(.headline)
                     .foregroundColor(.white)
-                    .opacity(isGameOver ? 1 : 0) // Fade-in animation
+                    .opacity(isGameOver ? 1 : 0)
                     .onAppear {
                         withAnimation(.easeInOut(duration: 0.5)) {
                             isGameOver = true
                         }
                     }
 
-                Text("Score: \(score)")
+                Text("\(NSLocalizedString("Score:", comment: "")) \(score)")
                     .font(.headline)
                     .foregroundColor(.white)
-                    .opacity(isGameOver ? 1 : 0) // Fade-in animation
+                    .opacity(isGameOver ? 1 : 0)
                     .onAppear {
                         withAnimation(.easeInOut(duration: 0.5)) {
                             isGameOver = true
                         }
                     }
+
+
 
                 Button(action: {
                     self.button()

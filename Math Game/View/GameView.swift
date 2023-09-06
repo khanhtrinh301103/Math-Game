@@ -123,12 +123,12 @@ struct GameView: View {
                         }
                         
                         // Display score and time remaining
-                        Text("Score: \(score)")
+                        Text("Score:") + Text( "\(score)")
                             .font(.headline)
                             .bold()
                             .foregroundColor(.white)
                         
-                        Text("Time Remaining: \(timeRemaining)")
+                        Text("Time Remaining:") + Text("\(timeRemaining)")
                             .font(.headline)
                             .bold()
                             .foregroundColor(.white)
