@@ -5,13 +5,13 @@ struct GameOverView: View {
     @Binding var score: Int
     @Binding var username: String
     var restartGame: () -> Void // Add this closure
-    
+    @AppStorage("isDarkMode") private var isDarkMode = false
     var body: some View {
         ZStack {
             LinearGradient(
-                gradient: Gradient(colors: [Color.red, Color.orange]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
+            gradient: Gradient(colors: isDarkMode ? [Color.black, Color.orange] : [Color.red, Color.orange]), // Change colors based on isDarkMode
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
             ).ignoresSafeArea(.all, edges: .all)
             
             VStack {

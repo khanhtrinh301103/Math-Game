@@ -4,15 +4,17 @@ struct WinAchievementView: View {
     @Binding var isPresented: Bool
     @State private var rotation: Double = 0
     @State private var scale: CGFloat = 1
-    var resumeTimer: () -> Void
+    @AppStorage("isDarkMode") private var isDarkMode = false
 
+    var resumeTimer: () -> Void
+    
     var body: some View {
         ZStack {
             LinearGradient(
-                gradient: Gradient(colors: [Color.red, Color.blue]), // Customize your gradient colors
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            ).edgesIgnoringSafeArea(.all)
+            gradient: Gradient(colors: isDarkMode ? [Color.black, Color.green] : [Color.red, Color.blue]), // Change colors based on isDarkMode
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        ).ignoresSafeArea(.all, edges: .all)
 
             VStack {
                 Text("Congratulations!")

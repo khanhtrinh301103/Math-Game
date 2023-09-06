@@ -4,6 +4,7 @@ import AVFoundation
 struct SavedScoreView: View {
     @Binding var savedScores: [Score]
     @Binding var showSavedScores: Bool
+    @AppStorage("isDarkMode") private var isDarkMode = false
     
     var resumeTimer: () -> Void // Add this callback
     
@@ -44,6 +45,12 @@ struct SavedScoreView: View {
         .onDisappear {
             resumeTimer() // Resume the timer when leaving the view
         }
+        .background(
+            LinearGradient(
+            gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        ).ignoresSafeArea(.all, edges: .all))
     }
 }
 

@@ -47,10 +47,10 @@ struct GameView: View {
                     .frame(width: 350, height: 650) // Adjust the width and height as needed
                     .background(
                         LinearGradient(
-                            gradient: Gradient(colors: [Color.green, Color.blue]), // Customize the gradient colors
+                            gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
-                        )
+                        ).ignoresSafeArea(.all, edges: .all)
                     )
             }
             

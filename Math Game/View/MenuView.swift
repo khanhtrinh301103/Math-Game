@@ -12,9 +12,10 @@ struct MenuView: View {
     }
     
     var body: some View {
+        NavigationView{
             ZStack {
                 LinearGradient(
-                    gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+                    gradient: Gradient(colors: isDarkMode ? [Color.black, Color.gray] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea(.all, edges: .all)
@@ -110,6 +111,7 @@ struct MenuView: View {
             .preferredColorScheme(isDarkMode ? .dark : .light) // Apply the color scheme
         }
     }
+}
     
 
 struct MenuView_Previews: PreviewProvider {

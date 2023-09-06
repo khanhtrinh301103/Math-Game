@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AnswerButton: View {
     var number: Int
-
+    @AppStorage("isDarkMode") private var isDarkMode = false
     var body: some View {
         Text("\(number)")
             .frame(width: 110, height: 110)
@@ -10,10 +10,10 @@ struct AnswerButton: View {
             .foregroundColor(Color.white)
             .background(
                 LinearGradient(
-                    gradient: Gradient(colors: [Color.blue, Color.purple]),
+                    gradient: Gradient(colors: isDarkMode ? [Color.black, Color.yellow] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
-                )
+                ).ignoresSafeArea(.all, edges: .all)
             )
             .clipShape(Circle())
             .overlay(
