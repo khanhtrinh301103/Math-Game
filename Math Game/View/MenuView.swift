@@ -24,99 +24,97 @@ struct MenuView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                LinearGradient(
-                    gradient: Gradient(colors: isDarkMode ? [Color.black, Color.gray] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                ).ignoresSafeArea(.all, edges: .all)
-                
-                VStack(spacing: 20) {
-                    Spacer()
-                    VStack(spacing: 0) {
-                        Image("logo")
-                            .resizable()
-                            .frame(width: 200, height: 150)
-                            .foregroundColor(.white)
-                        
-                        Text("Math Game")
-                            .font(.title)
-                            .fontWeight(.light)
-                            .foregroundColor(.white)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 10)
-                            .onAppear {
-                                playSound(sound: "Menu", type: "mp3")
-                            }
-                    }
-                    Spacer()
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: isDarkMode ? [Color.black, Color.gray] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ).ignoresSafeArea(.all, edges: .all)
+            
+            VStack(spacing: 20) {
+                Spacer()
+                VStack(spacing: 0) {
+                    Image("logo")
+                        .resizable()
+                        .frame(width: 200, height: 150)
+                        .foregroundColor(.white)
                     
-                    Button(action: {
-                        active = false
-                        self.button()
-                    }, label: {
-                        Capsule()
-                            .fill(Color.white.opacity(0.8))
-                            .padding(8)
-                            .frame(height: 80)
-                            .overlay(Text("Let's play ▶︎")
-                                .font(.system(.title3, design: .rounded))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.blue))
-                    })
-                    
-                    Button(action: {
-                        isShowingInstructions.toggle() // Toggle the state of isShowingInstructions
-                        self.button()
-                    }, label: {
-                        Capsule()
-                            .fill(Color.white.opacity(0.8))
-                            .padding(8)
-                            .frame(height: 80)
-                            .overlay(Text("How to Play 💡")
-                                .font(.system(.title3, design: .rounded))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.orange))
-                    })
-                    .sheet(isPresented: $isShowingInstructions) {
-                        InstructionView(isShowingInstruction: $isShowingInstructions) // Pass isShowingInstructions
-                    }
-                    
-                    Button(action: {
-                        isShowingSettings.toggle()
-                        self.button()
-                    }, label: {
-                        Capsule()
-                            .fill(Color.white.opacity(0.8))
-                            .padding(8)
-                            .frame(height: 80)
-                            .overlay(Text("Settings ⚙️")
-                                .font(.system(.title3, design: .rounded))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.red))
-                    })
-                    .sheet(isPresented: $isShowingSettings) {
-                        GameSettingView(isShowingSettings: $isShowingSettings, selectedDifficulty: $selectedDifficulty) // Pass selectedDifficulty
-                    }
-                    
-                    Button(action: {
-                        isDarkMode.toggle()
-                        self.button()
-                    }) {
-                        Image(systemName: isDarkMode ? "moon.fill" : "sun.max.fill")
-                            .font(.system(size: 30))
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(Color.blue)
-                            .clipShape(Circle())
-                            .offset(x: 0, y: 20) // Position the button in the top-left corner
-                    }
-                    .padding(.leading, 10) // Add some additional padding for better spacing
+                    Text("Math Game")
+                        .font(.title)
+                        .fontWeight(.light)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 10)
+                        .onAppear {
+                            playSound(sound: "Menu", type: "mp3")
+                        }
                 }
+                Spacer()
+                
+                Button(action: {
+                    active = false
+                    self.button()
+                }, label: {
+                    Capsule()
+                        .fill(Color.white.opacity(0.8))
+                        .padding(8)
+                        .frame(height: 80)
+                        .overlay(Text("Let's Play ▶︎")
+                            .font(.system(.title3, design: .rounded))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.blue))
+                })
+                
+                Button(action: {
+                    isShowingInstructions.toggle() // Toggle the state of isShowingInstructions
+                    self.button()
+                }, label: {
+                    Capsule()
+                        .fill(Color.white.opacity(0.8))
+                        .padding(8)
+                        .frame(height: 80)
+                        .overlay(Text("How to Play 💡")
+                            .font(.system(.title3, design: .rounded))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.orange))
+                })
+                .sheet(isPresented: $isShowingInstructions) {
+                    InstructionView(isShowingInstruction: $isShowingInstructions) // Pass isShowingInstructions
+                }
+                
+                Button(action: {
+                    isShowingSettings.toggle()
+                    self.button()
+                }, label: {
+                    Capsule()
+                        .fill(Color.white.opacity(0.8))
+                        .padding(8)
+                        .frame(height: 80)
+                        .overlay(Text("Settings ⚙️")
+                            .font(.system(.title3, design: .rounded))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.red))
+                })
+                .sheet(isPresented: $isShowingSettings) {
+                    GameSettingView(isShowingSettings: $isShowingSettings, selectedDifficulty: $selectedDifficulty) // Pass selectedDifficulty
+                }
+                
+                Button(action: {
+                    isDarkMode.toggle()
+                    self.button()
+                }) {
+                    Image(systemName: isDarkMode ? "moon.fill" : "sun.max.fill")
+                        .font(.system(size: 30))
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .background(Color.blue)
+                        .clipShape(Circle())
+                        .offset(x: 0, y: 20) // Position the button in the top-left corner
+                }
+                .padding(.leading, 10) // Add some additional padding for better spacing
             }
-            .preferredColorScheme(isDarkMode ? .dark : .light) // Apply the color scheme
         }
+        .preferredColorScheme(isDarkMode ? .dark : .light) // Apply the color scheme
     }
 }
 

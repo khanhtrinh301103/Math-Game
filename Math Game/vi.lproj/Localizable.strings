@@ -1,0 +1,43 @@
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Trinh Xuan Khanh
+  ID: s3927152
+  Created  date: 29/08/2023
+  Last modified: 06/09/2023
+  Acknowledgement: None.
+*/
+
+"Choose a Difficulty Level" = "Chọn một Mức Độ Khó";
+"In the settings, select your preferred difficulty level: Easy, Medium, or Hard" = "Trong cài đặt, chọn mức độ khó ưa thích của bạn: Dễ, Trung bình hoặc Khó";
+"Start the Game" = "Bắt đầu Trò Chơi";
+"After selecting a difficulty level, tap Save button to save the level of difficulty then tap let's play to begin." = "Sau khi chọn mức độ khó, nhấn nút Lưu để lưu mức độ khó sau đó nhấn vào Let's Play để bắt đầu.";
+"Answer the Questions and saved score" = "Trả lời các câu hỏi và lưu điểm số";
+"You will be presented with math questions based on your chosen difficulty. Tap the correct answer to earn score, you have 10 seconds for each question. When you save the score, this game will encourage you by a winning screen and notify that your score is saved successfully, you can check the save score by tapping the button view saved scores" = "Bạn sẽ được đặt trước trước các câu hỏi toán học dựa trên mức độ khó bạn đã chọn. Nhấn vào câu trả lời đúng để kiếm điểm, bạn có 10 giây cho mỗi câu hỏi. Khi bạn lưu điểm số, trò chơi này sẽ động viên bạn bằng một màn hình thắng cuộc và thông báo rằng điểm của bạn đã được lưu thành công, bạn có thể kiểm tra điểm đã lưu bằng cách nhấn vào nút Xem Điểm Đã Lưu";
+"Game Over view" = "Màn hình Kết Thúc Trò Chơi";
+"When your score is below 0 or the time is up, the game will be overed" = "Khi điểm số của bạn dưới 0 hoặc thời gian đã hết, trò chơi sẽ kết thúc";
+"Score:" = "Điểm:";
+"Time Remaining:" = "Thời Gian Còn Lại:";
+"Save Score" = "Lưu Điểm Số";
+"View Saved Scores" = "Xem Điểm Đã Lưu";
+"Return" = "Quay Lại";
+"Enter Your Username:" = "Nhập Tên Người Dùng Của Bạn:";
+"Username" = "Tên Người Dùng";
+"Start Game" = "Bắt Đầu Trò Chơi";
+"Congratulations!" = "Chúc Mừng!";
+"You Won the Game!" = "Bạn Đã Chiến Thắng Trò Chơi!";
+"Your score is saved successfully" = "Điểm của bạn đã được lưu thành công";
+"Close" = "Đóng";
+"Select Difficulty Level" = "Chọn Mức Độ Khó";
+"Easy: Addition" = "Dễ: Phép Cộng";
+"Medium: Multiplication" = "Trung bình: Phép Nhân";
+"Hard: Addition and Division" = "Khó: Phép Cộng và Phép Chia";
+"Save" = "Lưu";
+"Game Over" = "Kết Thúc Trò Chơi";
+"Play Again" = "Chơi Lại";
+"Let's Play ▶︎" = "Bắt Đầu Chơi ▶︎";
+"How to Play 💡" = "Cách Chơi 💡";
+"Settings ⚙️" = "Cài Đặt ⚙️";
+"Leaderboard" = "Bảng Xếp Hạng";

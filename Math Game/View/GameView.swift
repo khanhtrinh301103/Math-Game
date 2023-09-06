@@ -23,6 +23,7 @@ struct GameView: View {
     @State private var thirdNumber = 0
     @State private var difficulty = 100
     @State private var score = 0
+    @State private var isVietnamese: Bool = false // Track the selected language
     @State private var isGameOver = false
     @State private var savedScores: [Score] = []
     @State private var username = ""
@@ -122,7 +123,7 @@ struct GameView: View {
                         }
                         
                         // Display score and time remaining
-                        Text("Score \(score)")
+                        Text("Score: \(score)")
                             .font(.headline)
                             .bold()
                             .foregroundColor(.white)
@@ -359,6 +360,7 @@ struct GameView: View {
 struct UsernameEntryView: View {
     @Binding var username: String
     let onUsernameEntered: () -> Void
+    @State private var isVietnamese: Bool = false // Track the selected language
     
     var body: some View {
         VStack {

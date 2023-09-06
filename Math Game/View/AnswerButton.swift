@@ -14,7 +14,7 @@ import SwiftUI
 
 struct AnswerButton: View {
     var number: Int
-    @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage("isDarkMode") private var isDarkMode = false // Track dark mode preference
     
     var body: some View {
         Text("\(number)")

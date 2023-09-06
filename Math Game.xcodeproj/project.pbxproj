@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5670D5E42AA87BA90035F148 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5670D5E62AA87BA90035F148 /* Localizable.strings */; };
 		56D71DD32AA72B2A001DD0B5 /* Won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D71DD22AA72B2A001DD0B5 /* Won.mp3 */; };
 		56DCCA992AA70F2B00CCE24D /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DCCA8F2AA70F2B00CCE24D /* InstructionView.swift */; };
 		56DCCA9A2AA70F2B00CCE24D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DCCA902AA70F2B00CCE24D /* GameView.swift */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5670D5E52AA87BA90035F148 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5670D5E72AA87BAF0035F148 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		56D71DD22AA72B2A001DD0B5 /* Won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Won.mp3; sourceTree = "<group>"; };
 		56DCCA8F2AA70F2B00CCE24D /* InstructionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
 		56DCCA902AA70F2B00CCE24D /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 				56EDE8E32AA70D890014E02E /* Math_GameApp.swift */,
 				56EDE8E72AA70D8A0014E02E /* Assets.xcassets */,
 				56EDE8E92AA70D8A0014E02E /* Preview Content */,
+				5670D5E62AA87BA90035F148 /* Localizable.strings */,
 			);
 			path = "Math Game";
 			sourceTree = "<group>";
@@ -182,7 +186,7 @@
 		56EDE8D82AA70D890014E02E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = NO;
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
@@ -198,6 +202,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = 56EDE8D72AA70D890014E02E;
 			productRefGroup = 56EDE8E12AA70D890014E02E /* Products */;
@@ -219,6 +224,7 @@
 				56EEAAA02AA71EBC00D7B0FE /* Button.mp3 in Resources */,
 				56EEAAA52AA7204500D7B0FE /* GameOver.mp3 in Resources */,
 				56EDE8EB2AA70D8A0014E02E /* Preview Assets.xcassets in Resources */,
+				5670D5E42AA87BA90035F148 /* Localizable.strings in Resources */,
 				56EEAAA32AA71FC500D7B0FE /* HowToPlay.mp3 in Resources */,
 				56EEAAA72AA7220C00D7B0FE /* Leaderboard.mp3 in Resources */,
 				56D71DD32AA72B2A001DD0B5 /* Won.mp3 in Resources */,
@@ -251,6 +257,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5670D5E62AA87BA90035F148 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5670D5E52AA87BA90035F148 /* vi */,
+				5670D5E72AA87BAF0035F148 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		56EDE8EC2AA70D8A0014E02E /* Debug */ = {
