@@ -1,3 +1,15 @@
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Trinh Xuan Khanh
+  ID: s3927152
+  Created  date: 29/08/2023
+  Last modified: 06/09/2023
+  Acknowledgement: None.
+*/
+
 import SwiftUI
 
 struct MenuView: View {
@@ -12,14 +24,13 @@ struct MenuView: View {
     }
     
     var body: some View {
-        NavigationView{
+        NavigationView {
             ZStack {
                 LinearGradient(
                     gradient: Gradient(colors: isDarkMode ? [Color.black, Color.gray] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea(.all, edges: .all)
-                
                 
                 VStack(spacing: 20) {
                     Spacer()
@@ -35,7 +46,7 @@ struct MenuView: View {
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 10)
-                            .onAppear{
+                            .onAppear {
                                 playSound(sound: "Menu", type: "mp3")
                             }
                     }
@@ -72,7 +83,6 @@ struct MenuView: View {
                         InstructionView(isShowingInstruction: $isShowingInstructions) // Pass isShowingInstructions
                     }
                     
-                    
                     Button(action: {
                         isShowingSettings.toggle()
                         self.button()
@@ -89,9 +99,6 @@ struct MenuView: View {
                     .sheet(isPresented: $isShowingSettings) {
                         GameSettingView(isShowingSettings: $isShowingSettings, selectedDifficulty: $selectedDifficulty) // Pass selectedDifficulty
                     }
-                    
-                    
-                    
                     
                     Button(action: {
                         isDarkMode.toggle()
@@ -112,7 +119,6 @@ struct MenuView: View {
         }
     }
 }
-    
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {

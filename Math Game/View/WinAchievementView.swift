@@ -1,3 +1,15 @@
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Trinh Xuan Khanh
+  ID: s3927152
+  Created  date: 29/08/2023
+  Last modified: 06/09/2023
+  Acknowledgement: None.
+*/
+
 import SwiftUI
 
 struct WinAchievementView: View {
@@ -11,10 +23,10 @@ struct WinAchievementView: View {
     var body: some View {
         ZStack {
             LinearGradient(
-            gradient: Gradient(colors: isDarkMode ? [Color.black, Color.green] : [Color.red, Color.blue]), // Change colors based on isDarkMode
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        ).ignoresSafeArea(.all, edges: .all)
+                gradient: Gradient(colors: isDarkMode ? [Color.black, Color.green] : [Color.red, Color.blue]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ).ignoresSafeArea(.all, edges: .all)
 
             VStack {
                 Text("Congratulations!")
@@ -24,12 +36,13 @@ struct WinAchievementView: View {
                     .padding(.top, 30)
                     .scaleEffect(scale)
                     .onAppear {
+                        // Add a scaling animation to the text
                         withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
                             scale = 1.2
                         }
                         
+                        // Play a sound when the view appears
                         playSound(sound: "Won", type: "mp3")
-                        
                     }
 
                 Image(systemName: "star.fill")
@@ -38,6 +51,7 @@ struct WinAchievementView: View {
                     .padding(.top, 20)
                     .rotationEffect(.degrees(rotation))
                     .onAppear {
+                        // Add a rotating animation to the star icon
                         withAnimation(.linear(duration: 5).repeatForever(autoreverses: false)) {
                             rotation = 360
                         }
@@ -58,8 +72,8 @@ struct WinAchievementView: View {
                 Button(action: {
                     self.button()
                     isPresented.toggle()
-                    resumeTimer()
-                    stopBackgroundSound()
+                    resumeTimer() // Resume the timer in the GameView
+                    stopBackgroundSound() // Stop the background sound when closing the view
                 }) {
                     Text("Close")
                         .font(.title)
@@ -81,7 +95,6 @@ struct WinAchievementView: View {
         playSound(sound: "Button", type: "mp3")
     }
 }
-
 
 struct WinAchievementView_Previews: PreviewProvider {
     static var previews: some View {

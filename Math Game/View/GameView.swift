@@ -1,6 +1,20 @@
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Trinh Xuan Khanh
+  ID: s3927152
+  Created  date: 29/08/2023
+  Last modified: 06/09/2023
+  Acknowledgement: None.
+*/
+
 import SwiftUI
 
+// GameView represents the main game screen
 struct GameView: View {
+    // State variables to manage various aspects of the game
     @State private var showSavedScores = false
     @State private var correctAnswer = 0
     @State private var choiceArray: [Int] = [0, 1, 2, 3]
@@ -18,36 +32,42 @@ struct GameView: View {
     @State private var isWinAchievementViewPresented = false
     private let originalTimeLimit = 10
     
+    // Timer and time-related state variables
     @State private var timer: Timer?
-    @State private var timeRemaining = 10 // Initial time limit
-    @State private var isTimerPaused = false // Flag to indicate timer pause state
+    @State private var timeRemaining = 10
+    @State private var isTimerPaused = false
+    
+    // Dark mode setting
     @AppStorage("isDarkMode") private var isDarkMode = false
 
+    // Define the color scheme based on dark mode setting
     private var colorScheme: ColorScheme {
         isDarkMode ? .dark : .light
     }
-
-    
     
     var body: some View {
         ZStack {
+            // Background gradient
             LinearGradient(
-                gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+                gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             ).ignoresSafeArea(.all, edges: .all)
+            
+            // Check if entering username
             if !isEnteringUsername {
+                // Game screen UI elements
                 LinearGradient(
-                    gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+                    gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea(.all, edges: .all)
-                RoundedRectangle(cornerRadius: 20) // Adjust the corner radius as needed
-                    .stroke(Color.white, lineWidth: 0) // Customize the border color and width
-                    .frame(width: 350, height: 650) // Adjust the width and height as needed
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.white, lineWidth: 0)
+                    .frame(width: 350, height: 650)
                     .background(
                         LinearGradient(
-                            gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+                            gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]),
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         ).ignoresSafeArea(.all, edges: .all)
@@ -56,19 +76,21 @@ struct GameView: View {
             
             VStack {
                 if isEnteringUsername {
-                    // Prompt the user to enter a username
+                    // Username entry view
                     UsernameEntryView(username: $username, onUsernameEntered: startGame)
                         .foregroundColor(.yellow)
                 } else {
                     if isGameOver {
-                        // Game Over view here
+                        // Game over view
                         GameOverView(isGameOver: $isGameOver, score: $score, username: $username, restartGame: restartGame)
                     } else {
+                        // Display the current math question based on selected difficulty
                         Text(selectedDifficulty == .easy ? "\(firstNumber) + \(secondNumber)" : selectedDifficulty == .medium ? "\(firstNumber) * \(secondNumber)" : "(\(firstNumber) + \(secondNumber)) : \(thirdNumber)")
                             .font(.largeTitle)
                             .bold()
                             .foregroundColor(.white)
                         
+                        // Answer buttons
                         HStack {
                             ForEach(0..<2) { index in
                                 Button {
@@ -99,6 +121,7 @@ struct GameView: View {
                             }
                         }
                         
+                        // Display score and time remaining
                         Text("Score \(score)")
                             .font(.headline)
                             .bold()
@@ -108,13 +131,13 @@ struct GameView: View {
                             .font(.headline)
                             .bold()
                             .foregroundColor(.white)
-                            .onAppear{playSound(sound: "GameView", type: "mp3")}
                         
+                        // Save score button
                         Button(action: {
                             self.button()
                             if score >= 0 {
                                 saveScore()
-                                isWinAchievementViewPresented = true // Show the WinAchievementView
+                                isWinAchievementViewPresented = true
                             } else {
                                 isGameOver = true
                                 audioPlayer?.stop()
@@ -132,10 +155,11 @@ struct GameView: View {
                             WinAchievementView(isPresented: $isWinAchievementViewPresented, resumeTimer: resumeTimer)
                         }
                         
+                        // View saved scores button
                         Button(action: {
                             self.button()
                             showSavedScores.toggle()
-                            pauseTimer() // Call the function to pause the timer
+                            pauseTimer()
                         }) {
                             Text("View Saved Scores")
                                 .font(.headline)
@@ -148,9 +172,10 @@ struct GameView: View {
                             SavedScoreView(savedScores: $savedScores, showSavedScores: $showSavedScores,  resumeTimer: resumeTimer)
                         }
                         
+                        // Return to welcome screen button
                         Button(action: {
                             self.button()
-                            isWelcomeActive = true // Call the function to pause the timer
+                            isWelcomeActive = true
                         }) {
                             Text("Return")
                                 .font(.headline)
@@ -165,18 +190,17 @@ struct GameView: View {
         }
         .preferredColorScheme(colorScheme)
         .onAppear {
-            // Start the timer when the view appears
             startTimer()
         }
         .onAppear(perform: {
           playSound(sound: "GameView", type: "mp3")
         })
         .onDisappear {
-            // Invalidate the timer when the view disappears
             timer?.invalidate()
         }
     }
     
+    // Start the game timer
     func startTimer() {
         timer?.invalidate() // Invalidate any existing timer
         
@@ -196,7 +220,7 @@ struct GameView: View {
         timer?.fire()
     }
     
-    
+    // Check if the selected answer is correct
     func answerIsCorrect(answer: Int) {
         let isCorrect = answer == correctAnswer ? true : false
         
@@ -212,6 +236,7 @@ struct GameView: View {
         }
     }
     
+    // Generate new math questions based on difficulty level
     func generateAnswers() {
         switch selectedDifficulty {
         case .easy:
@@ -227,7 +252,7 @@ struct GameView: View {
         startTimer()
     }
     
-    
+    // Generate addition questions
     func generateSumAnswers() {
         firstNumber = Int.random(in: 0...(difficulty / 2))
         secondNumber = Int.random(in: 0...(difficulty / 2))
@@ -243,6 +268,7 @@ struct GameView: View {
         choiceArray = answerList.shuffled()
     }
     
+    // Generate multiplication questions
     func generateProductAnswers() {
         firstNumber = Int.random(in: 10...99)
         secondNumber = Int.random(in: 1...20)
@@ -259,6 +285,7 @@ struct GameView: View {
         choiceArray = answerList.shuffled()
     }
     
+    // Generate division questions
     func generateDivisionAnswers() {
         var sum = 0
         var isSumDivisible = false
@@ -287,6 +314,7 @@ struct GameView: View {
         choiceArray = answerList.shuffled()
     }
     
+    // Restart the game
     func restartGame() {
         score = 0
         isGameOver = false
@@ -295,19 +323,19 @@ struct GameView: View {
         startTimer() // Start the timer again
     }
     
-    
+    // Start the game when the username is entered
     func startGame() {
-        // Called when the user enters a username and starts the game
         isEnteringUsername = false
         generateAnswers()
         startTimer()
     }
     
+    // Pause the game timer
     func pauseTimer() {
         isTimerPaused = true
     }
 
-    
+    // Save the user's score
     func saveScore() {
         // Pause the timer when saving the score
         isTimerPaused = true
@@ -316,17 +344,18 @@ struct GameView: View {
         // You can also add additional logic here, such as sorting the savedScores array.
     }
     
+    // Resume the game timer
     func resumeTimer() {
         isTimerPaused = false // Unpause the timer
     }
     
+    // Play a button sound
     func button(){
         playSound(sound: "Button", type: "mp3")
     }
-    
-    
 }
 
+// UsernameEntryView is responsible for username input
 struct UsernameEntryView: View {
     @Binding var username: String
     let onUsernameEntered: () -> Void
@@ -355,13 +384,13 @@ struct UsernameEntryView: View {
         .cornerRadius(10)
     }
     
+    // Play a button sound
     func StartButton(){
         playSound(sound: "Button", type: "mp3")
     }
-    
 }
 
-
+// PreviewProvider for GameView
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         let isWelcomeActiveBinding = Binding<Bool>(

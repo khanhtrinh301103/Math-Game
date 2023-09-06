@@ -1,3 +1,15 @@
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Trinh Xuan Khanh
+  ID: s3927152
+  Created  date: 29/08/2023
+  Last modified: 06/09/2023
+  Acknowledgement: None.
+*/
+
 import SwiftUI
 
 struct GameSettingView: View {
@@ -12,40 +24,43 @@ struct GameSettingView: View {
                 .foregroundColor(.white)
                 .padding(.bottom, 20)
 
+            // Button to select Easy difficulty
             Button("Easy: Addition", action: {
                 self.button()
-                selectedDifficulty = .easy
+                selectedDifficulty = .easy // Set the selected difficulty to Easy
             })
             .font(.headline)
             .padding()
-            .background(selectedDifficulty == .easy ? Color.green : Color.gray)
+            .background(selectedDifficulty == .easy ? Color.green : Color.gray) // Highlight if selected
             .foregroundColor(.white)
             .cornerRadius(10)
             .padding(.bottom, 10)
 
+            // Button to select Medium difficulty
             Button("Medium: Multiplication", action: {
                 self.button()
-                selectedDifficulty = .medium
+                selectedDifficulty = .medium // Set the selected difficulty to Medium
             })
             .font(.headline)
             .padding()
-            .background(selectedDifficulty == .medium ? Color.orange : Color.gray)
+            .background(selectedDifficulty == .medium ? Color.orange : Color.gray) // Highlight if selected
             .foregroundColor(.white)
             .cornerRadius(10)
             .padding(.bottom, 10)
 
+            // Button to select Hard difficulty
             Button("Hard: Addition and Division", action: {
                 self.button()
-                selectedDifficulty = .hard
+                selectedDifficulty = .hard // Set the selected difficulty to Hard
             })
             .font(.headline)
             .padding()
-            .background(selectedDifficulty == .hard ? Color.red : Color.gray)
+            .background(selectedDifficulty == .hard ? Color.red : Color.gray) // Highlight if selected
             .foregroundColor(.white)
             .cornerRadius(10)
             .padding(.bottom, 10)
 
-            // Add a button to save the selected difficulty
+            // Button to save the selected difficulty and close the settings view
             Button("Save", action: {
                 self.button()
                 isShowingSettings = false // Close the settings view
@@ -59,10 +74,11 @@ struct GameSettingView: View {
         .padding()
         .background(
             LinearGradient(
-            gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        ).ignoresSafeArea(.all, edges: .all))
+                gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ).ignoresSafeArea(.all, edges: .all)
+        )
         .cornerRadius(20)
         .padding(20)
     }
@@ -77,4 +93,3 @@ struct GameSettingView_Previews: PreviewProvider {
         GameSettingView(isShowingSettings: .constant(true), selectedDifficulty: .constant(.easy))
     }
 }
-

@@ -1,9 +1,14 @@
-//
-//  Math_GameApp.swift
-//  Math Game
-//
-//  Created by Khanh Trinh Xuan on 05/09/2023.
-//
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Trinh Xuan Khanh
+  ID: s3927152
+  Created  date: 29/08/2023
+  Last modified: 06/09/2023
+  Acknowledgement: None.
+*/
 
 import SwiftUI
 
@@ -11,6 +16,7 @@ import SwiftUI
 struct Math_GameApp: App {
     var body: some Scene {
         WindowGroup {
-            Welcome()       }
+            Welcome()
+        }
     }
 }

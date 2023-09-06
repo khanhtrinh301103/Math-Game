@@ -1,13 +1,27 @@
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Trinh Xuan Khanh
+  ID: s3927152
+  Created  date: 29/08/2023
+  Last modified: 06/09/2023
+  Acknowledgement: None.
+*/
+
 import SwiftUI
 
+// InstructionView displays instructions on how to play the game.
 struct InstructionView: View {
     @AppStorage("isDarkMode") private var isDarkMode = false
-    @Binding var isShowingInstruction: Bool // Add a binding variable to control the view's visibility
+    @Binding var isShowingInstruction: Bool // Binding variable to control view visibility
     
     var body: some View {
         ZStack {
+            // Background gradient based on isDarkMode
             LinearGradient(
-                gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+                gradient: Gradient(colors: isDarkMode ? [Color.black, Color.yellow] : [Color.yellow, Color.purple]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             ).ignoresSafeArea(.all, edges: .all)
@@ -18,7 +32,7 @@ struct InstructionView: View {
                         Spacer()
                         Button(action: {
                             self.button()
-                            isShowingInstruction = false // Set the binding variable to false to close the view
+                            isShowingInstruction = false // Close the view when the button is tapped
                         }) {
                             Image(systemName: "xmark.circle.fill")
                                 .font(.largeTitle)
@@ -31,12 +45,9 @@ struct InstructionView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.bottom, 20)
-                        .foregroundColor(Color.white) // Change the title text color
-                        .onAppear{
-                            playSound(sound: "HowToPlay", type: "mp3")
-                            
-                        }
+                        .foregroundColor(Color.white) // Title text color
                     
+                    // Step 1 instructions
                     StepView(stepNumber: "1", title: "Choose a Difficulty Level", description: "In the settings, select your preferred difficulty level: Easy, Medium, or Hard", backgroundColor: Color.yellow)
                     
                     Image("Welcome")
@@ -44,6 +55,7 @@ struct InstructionView: View {
                         .frame(width: 300, height: 600)
                         .foregroundColor(.white)
                     
+                    // Step 2 instructions
                     StepView(stepNumber: "2", title: "Start the Game", description: "After selecting a difficulty level, tap Save button to save the level of difficulty then tap let's play to begin.", backgroundColor: Color.purple)
                     
                     Image("Setting")
@@ -51,6 +63,7 @@ struct InstructionView: View {
                         .frame(width: 300, height: 600)
                         .foregroundColor(.white)
                     
+                    // Step 3 instructions
                     StepView(stepNumber: "3", title: "Answer the Questions and saved score", description: "You will be presented with math questions based on your chosen difficulty. Tap the correct answer to earn score, you have 10 seconds for each question. When you save the score, this game will encourage you by a winning screen and notify that your score is saved successfully, you can check the save score by tapping the button view saved scores", backgroundColor: Color.blue)
                     
                     Image("GameView")
@@ -58,6 +71,7 @@ struct InstructionView: View {
                         .frame(width: 300, height: 600)
                         .foregroundColor(.white)
                     
+                    // Step 4 instructions
                     StepView(stepNumber: "4", title: "Game Over view", description: "When your score is below 0 or the time is up, the game will be overed", backgroundColor: Color.yellow)
                     
                     Image("GameOver")
@@ -72,11 +86,13 @@ struct InstructionView: View {
         }
     }
     
+    // Play a button sound
     func button(){
         playSound(sound: "Button", type: "mp3")
     }
 }
 
+// StepView displays a single step of instructions.
 struct StepView: View {
     var stepNumber: String
     var title: String
@@ -108,6 +124,7 @@ struct StepView: View {
     }
 }
 
+// PreviewProvider for InstructionView
 struct InstructionView_Previews: PreviewProvider {
     static var previews: some View {
         InstructionView(isShowingInstruction: .constant(true))

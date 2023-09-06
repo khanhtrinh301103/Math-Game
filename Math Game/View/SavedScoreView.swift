@@ -1,3 +1,15 @@
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 2
+  Author: Trinh Xuan Khanh
+  ID: s3927152
+  Created  date: 29/08/2023
+  Last modified: 06/09/2023
+  Acknowledgement: None.
+*/
+
 import SwiftUI
 import AVFoundation
 
@@ -41,16 +53,18 @@ struct SavedScoreView: View {
                     .font(.headline)
             })
         }
-        .onAppear{playSound(sound: "Leaderboard", type: "mp3")}
+        .onAppear {
+            playSound(sound: "Leaderboard", type: "mp3") // Play a sound when the view appears
+        }
         .onDisappear {
             resumeTimer() // Resume the timer when leaving the view
         }
         .background(
             LinearGradient(
-            gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        ).ignoresSafeArea(.all, edges: .all))
+                gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ).ignoresSafeArea(.all, edges: .all))
     }
 }
 
