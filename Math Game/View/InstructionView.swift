@@ -1,12 +1,16 @@
 import SwiftUI
 
 struct InstructionView: View {
+    @AppStorage("isDarkMode") private var isDarkMode = false
     @Binding var isShowingInstruction: Bool // Add a binding variable to control the view's visibility
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.green]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all) // Cover the entire screen
+            LinearGradient(
+                gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ).ignoresSafeArea(.all, edges: .all)
             
             ScrollView {
                 VStack {

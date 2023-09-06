@@ -12,10 +12,9 @@ struct MenuView: View {
     }
     
     var body: some View {
-        NavigationView{
             ZStack {
                 LinearGradient(
-                    gradient: Gradient(colors: isDarkMode ? [Color.black, Color.gray] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
+                    gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea(.all, edges: .all)
@@ -103,7 +102,7 @@ struct MenuView: View {
                             .padding(10)
                             .background(Color.blue)
                             .clipShape(Circle())
-                            .offset(x: -20, y: 20) // Position the button in the top-left corner
+                            .offset(x: 0, y: 20) // Position the button in the top-left corner
                     }
                     .padding(.leading, 10) // Add some additional padding for better spacing
                 }
@@ -111,7 +110,6 @@ struct MenuView: View {
             .preferredColorScheme(isDarkMode ? .dark : .light) // Apply the color scheme
         }
     }
-}
     
 
 struct MenuView_Previews: PreviewProvider {

@@ -3,6 +3,7 @@ import SwiftUI
 struct GameSettingView: View {
     @Binding var isShowingSettings: Bool
     @Binding var selectedDifficulty: GameDifficulty
+    @AppStorage("isDarkMode") private var isDarkMode = false
 
     var body: some View {
         VStack {
@@ -56,11 +57,12 @@ struct GameSettingView: View {
             .cornerRadius(10)
         }
         .padding()
-        .background(LinearGradient(
-            gradient: Gradient(colors: [Color.purple, Color.blue]),
+        .background(
+            LinearGradient(
+            gradient: Gradient(colors: isDarkMode ? [Color.black, Color.white] : [Color.blue, Color.purple]), // Change colors based on isDarkMode
             startPoint: .topLeading,
             endPoint: .bottomTrailing
-        ))
+        ).ignoresSafeArea(.all, edges: .all))
         .cornerRadius(20)
         .padding(20)
     }
